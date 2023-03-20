@@ -4,7 +4,7 @@ import fetchImages from 'helpers/fetchImages';
 import { useState, useEffect } from 'react';
 
 export const App = () => {
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
   const [imageName, setImageName] = useState('');
   const [images, setImages] = useState([]);
 
@@ -17,7 +17,7 @@ export const App = () => {
       setImages([]);
     }
 
-    fetchImages(imageName, page)
+    fetchImages(imageName)
       .then(({ data }) => {
         setImages(prevImages => [
           ...prevImages,
@@ -29,7 +29,7 @@ export const App = () => {
         ]);
       })
       .catch(e => e.message);
-  }, [imageName, page]);
+  }, [imageName]);
 
   return (
     <div>
